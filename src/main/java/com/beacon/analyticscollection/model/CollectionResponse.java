@@ -15,7 +15,7 @@ public class CollectionResponse {
 
     private CollectionResponse() {
         this.statusCode = 200;
-        this.message = "success";
+        this.message = "message request received";
     }
 
     private CollectionResponse(int statusCode) {

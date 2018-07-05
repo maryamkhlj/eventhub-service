@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 public class AnalyticsCollectionController {
 
     @Autowired
-    AnalyticsCollectionService analyticsCollectionService;
+    private AnalyticsCollectionService analyticsCollectionService;
 
     @GetMapping("login")
     public CollectionResponse trackLogin(@RequestParam("username") String username, HttpServletRequest request) {
