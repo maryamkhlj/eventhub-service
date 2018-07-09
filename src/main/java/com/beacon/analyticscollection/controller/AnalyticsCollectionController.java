@@ -4,10 +4,7 @@ import com.beacon.analyticscollection.model.CollectionResponse;
 import com.beacon.analyticscollection.model.EventType;
 import com.beacon.analyticscollection.service.AnalyticsCollectionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,7 +20,7 @@ public class AnalyticsCollectionController {
 
         String ipAddress = request.getRemoteAddr();
         try {
-            analyticsCollectionService.forwardTrackedEvent(EventType.LOGIN, ipAddress, username);
+            analyticsCollectionService.forwardTrackedEvent(EventType.LOGIN, username, ipAddress);
         } catch (Exception e) {
             return CollectionResponse.error(e.getMessage());
         }
@@ -35,7 +32,7 @@ public class AnalyticsCollectionController {
 
         String ipAddress = request.getRemoteAddr();
         try {
-            analyticsCollectionService.forwardTrackedEvent(EventType.LOGOUT, ipAddress, username);
+            analyticsCollectionService.forwardTrackedEvent(EventType.LOGOUT, username, ipAddress);
         } catch (Exception e) {
             return CollectionResponse.error(e.getMessage());
         }
@@ -50,7 +47,7 @@ public class AnalyticsCollectionController {
         String ipAddress = request.getRemoteAddr();
 
         try {
-            analyticsCollectionService.forwardTrackedEvent(EventType.PASSWORD_CHANGE_REQUEST, ipAddress, "anonymous");
+            analyticsCollectionService.forwardTrackedEvent(EventType.PASSWORD_CHANGE_REQUEST, "anonymous", ipAddress);
         } catch (Exception e) {
             return CollectionResponse.error(e.getMessage());
         }
@@ -65,7 +62,7 @@ public class AnalyticsCollectionController {
         String ipAddress = request.getRemoteAddr();
 
         try {
-            analyticsCollectionService.forwardTrackedEvent(EventType.PASSWORD_CHANGE_SEND_EMAIL, ipAddress, username);
+            analyticsCollectionService.forwardTrackedEvent(EventType.PASSWORD_CHANGE_SEND_EMAIL, username, ipAddress);
         } catch (Exception e) {
             return CollectionResponse.error(e.getMessage());
         }
@@ -80,7 +77,7 @@ public class AnalyticsCollectionController {
         String ipAddress = request.getRemoteAddr();
 
         try {
-            analyticsCollectionService.forwardTrackedEvent(EventType.PASSWORD_CHANGE_CLICK_EMAIL, ipAddress, username);
+            analyticsCollectionService.forwardTrackedEvent(EventType.PASSWORD_CHANGE_CLICK_EMAIL, username, ipAddress);
         } catch (Exception e) {
             return CollectionResponse.error(e.getMessage());
         }
@@ -94,7 +91,7 @@ public class AnalyticsCollectionController {
 
         String ipAddress = request.getRemoteAddr();
         try {
-            analyticsCollectionService.forwardTrackedEvent(EventType.PASSWORD_CHANGE_COMPLETED, ipAddress, username);
+            analyticsCollectionService.forwardTrackedEvent(EventType.PASSWORD_CHANGE_COMPLETED, username, ipAddress);
         } catch (Exception e) {
             return CollectionResponse.error(e.getMessage());
         }
