@@ -6,7 +6,7 @@ public class EventHubRequest {
     private String username;
     private String ipAddress;
 
-    public EventHubRequest(EventType eventType, String username, String ipAddress) {
+    public EventHubRequest(EventType eventType, String ipAddress, String username) {
         this.eventType = eventType.name();
         this.username = username;
         this.ipAddress = ipAddress;
