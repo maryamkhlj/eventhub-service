@@ -27,6 +27,8 @@ public class AnalyticsCollectionService {
     @Async
     public void forwardTrackedEvent(EventType actionType, String ipAddress, String username) throws EventHubException, IOException {
 
+        System.out.println("Message being sent for: " +  actionType.toString());
+
         EventHubRequest payload = new EventHubRequest(actionType, ipAddress, username);
         final ExecutorService executorService = Executors.newSingleThreadExecutor();
 
